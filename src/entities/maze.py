@@ -27,8 +27,8 @@ class Maze:
         width: int,
         height: int,
         cords: tuple,
-        density,
-        user_choice_of_type_of_maze,
+        density: float,
+        user_choice_of_type_of_maze: str,
     ):
         """
         Initializes the maze with its width, height, start/end coordinates, density, and user choice.

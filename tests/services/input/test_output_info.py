@@ -23,12 +23,35 @@ class TestOutputHandler(unittest.TestCase):
         self.assertIn("3. Краскал", output)
 
     @patch("sys.stdout", new_callable=StringIO)
+    @patch("builtins.input", return_value="1")
+    @patch("src.utils.utils.move_cursor")
+    def test_print_input_error(self, mock_move_cursor, mock_input, mock_stdout):
+        choice = self.output_handler.print_input_error()
+        self.assertEqual(choice, 1)
+        output = mock_stdout.getvalue()
+        self.assertIn("Пожалуйста введите валидное число", output)
+        self.assertIn("1. DFS (поиск в глубину)", output)
+        self.assertIn("2. Прим", output)
+        self.assertIn("3. Краскал", output)
+
+    @patch("sys.stdout", new_callable=StringIO)
     @patch("builtins.input", return_value="2")
     @patch("src.utils.utils.move_cursor")
     def test_print_output(self, mock_move_cursor, mock_input, mock_stdout):
         choice = self.output_handler.print_output()
         self.assertEqual(choice, 2)
         output = mock_stdout.getvalue()
+        self.assertIn("1. BFS (поиск в ширину)", output)
+        self.assertIn("2. A* (поиск A-star)", output)
+
+    @patch("sys.stdout", new_callable=StringIO)
+    @patch("builtins.input", return_value="2")
+    @patch("src.utils.utils.move_cursor")
+    def test_print_output_error(self, mock_move_cursor, mock_input, mock_stdout):
+        choice = self.output_handler.print_output_error()
+        self.assertEqual(choice, 2)
+        output = mock_stdout.getvalue()
+        self.assertIn("Пожалуйста введите валидное число", output)
         self.assertIn("1. BFS (поиск в ширину)", output)
         self.assertIn("2. A* (поиск A-star)", output)
 
@@ -40,6 +63,15 @@ class TestOutputHandler(unittest.TestCase):
         self.assertEqual(choice, "Да")
         output = mock_stdout.getvalue()
         self.assertIn("Djkstra (алгоритм Дейкстры)", output)
+
+    @patch("sys.stdout", new_callable=StringIO)
+    @patch("builtins.input", return_value="Да")
+    @patch("src.utils.utils.move_cursor")
+    def test_print_output_weight_error(self, mock_move_cursor, mock_input, mock_stdout):
+        choice = self.output_handler.print_output_weight_error()
+        self.assertEqual(choice, "Да")
+        output = mock_stdout.getvalue()
+        self.assertIn("Введите именно Да", output)
 
     @patch("sys.stdout", new_callable=StringIO)
     @patch("src.utils.utils.move_cursor")
