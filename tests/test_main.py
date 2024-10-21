@@ -1,7 +1,5 @@
 import unittest
 from unittest.mock import patch
-import platform
-from src.labirint.maze_facade import MazeCascade
 import logging
 
 logging.basicConfig()

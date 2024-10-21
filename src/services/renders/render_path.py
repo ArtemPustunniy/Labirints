@@ -33,7 +33,7 @@ class RenderPath(Render):
                 # Check if the current point is a common element (like a wall), and render it in red ('*')
                 if maze.grid[x][y].symbol == common_elem.symbol:
                     sys.stdout.write(
-                        f"\033[31m*\033[0m"
+                        "\033[31m*\033[0m"
                     )  # Write red '*' to represent the path
                 else:
                     # Otherwise, render the current point's symbol in red

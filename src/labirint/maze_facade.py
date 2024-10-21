@@ -1,8 +1,9 @@
 from src.services.generators.generator_factory import GeneratorFactory
-from src.services.input.input import *
+from src.services.input.input import InputHandler
 from src.services.renders.default_render import DefaultRender
 from src.services.renders.render_path import RenderPath
 from src.services.solvers.solver_factory import SolverFactory
+from src.utils.utils import clear_screen
 
 
 class MazeCascade:

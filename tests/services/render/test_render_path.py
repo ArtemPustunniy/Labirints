@@ -1,13 +1,10 @@
 import unittest
-from unittest.mock import patch, call
-import sys
-import time
+from unittest.mock import patch
 from io import StringIO
 from src.entities.maze import Maze
 from src.services.renders.render_path import (
     RenderPath,
 )  # Assuming RenderPath is saved in src.services.renders.render_path
-from src.utils.utils import move_cursor
 
 
 class TestRenderPath(unittest.TestCase):

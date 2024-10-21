@@ -1,7 +1,6 @@
 import os
 import unittest
-from unittest.mock import patch, call
-import sys
+from unittest.mock import patch
 from io import StringIO
 from src.utils.utils import (
     clear_screen,

@@ -2,7 +2,6 @@ from abc import (
     ABC,
     abstractmethod,
 )  # Importing Abstract Base Class (ABC) and abstractmethod for defining an abstract base class
-from typing import List  # Importing List for type hinting when needed
 
 
 # Abstract base class for rendering the maze

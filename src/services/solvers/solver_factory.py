@@ -1,6 +1,3 @@
-from src.entities.maze import (
-    PossibleChoiceOfTypeOfMaze,
-)  # Importing the enum for maze type choices
 from src.services.solvers.astar_solver import AstarSolver  # Importing the A* solver
 from src.services.solvers.bfs_solver import BfsSolver  # Importing the BFS solver
 from src.services.solvers.djkstra_solver import (

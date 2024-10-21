@@ -1,6 +1,5 @@
 import unittest
-from unittest.mock import patch, call
-import sys
+from unittest.mock import patch
 from io import StringIO
 from src.entities.maze import Maze
 from src.services.renders.default_render import (

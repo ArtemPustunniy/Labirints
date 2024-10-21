@@ -1,7 +1,6 @@
 import unittest
 import random
-from src.entities.maze import Maze
-from src.entities.point import common_elem, symbols, weights
+from src.entities.point import common_elem, symbols
 from src.services.generators.kruskal_generator import (
     KruskalGenerator,
 )  # Assuming KruskalGenerator is saved in src.services.generators.kruskal_generator

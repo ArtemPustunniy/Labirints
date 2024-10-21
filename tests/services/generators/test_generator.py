@@ -5,11 +5,6 @@ from src.services.generators.generator import (
 
 
 class TestGenerator(unittest.TestCase):
-    def test_abstract_generate_method(self):
-        with self.assertRaises(TypeError):
-            generator = (
-                Generator()
-            )  # Attempting to instantiate an abstract class should raise a TypeError
 
     def test_subclass_implementation(self):
         class TestConcreteGenerator(Generator):

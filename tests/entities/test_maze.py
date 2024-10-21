@@ -1,6 +1,6 @@
 import unittest
 import sys
-from src.entities.point import Point, gran_elem, central_elem
+from src.entities.point import gran_elem, central_elem
 from src.entities.maze import (
     Maze,
 )  # Assuming the Maze class is saved in src.entities.maze

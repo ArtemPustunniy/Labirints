@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from io import StringIO
 from src.services.input.output_info import (
     OutputInfoHandler,

@@ -1,6 +1,6 @@
 from src.entities.maze import PossibleChoiceOfTypeOfMaze
 from src.services.input.reader import Reader
-from src.utils.utils import *
+from src.utils.utils import clear_input_line, move_cursor
 from src.services.input.output_info import OutputInfoHandler
 import sys
 

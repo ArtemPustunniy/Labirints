@@ -1,4 +1,6 @@
-from src.utils.utils import *  # Импорт всех утилитных функций из модуля utils
+import sys
+
+from src.utils.utils import move_cursor
 
 
 # Класс для вывода информации пользователю о выборе алгоритмов и координат

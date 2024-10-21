@@ -1,7 +1,4 @@
 import unittest
-from src.entities.directions import Directions
-from src.entities.maze import Maze
-from src.services.generators import generator
 from src.services.generators.generator_factory import GeneratorFactory
 from src.services.solvers.astar_solver import (
     AstarSolver,

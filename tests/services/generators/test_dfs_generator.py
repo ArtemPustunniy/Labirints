@@ -1,16 +1,8 @@
 import unittest
-import sys
-import math
-from src.entities.directions import Directions
 from src.entities.point import (
-    Point,
-    gran_elem,
-    central_elem,
     common_elem,
     symbols,
-    weights,
 )
-from src.entities.maze import Maze
 from src.services.generators.dfs_generator import (
     DfsGenerator,
 )  # Assuming DfsGenerator is saved in src.services.generators.dfs_generator
