@@ -49,24 +49,22 @@ class Point:
         return f"Point(weight={self.weight}, symbol={self.symbol})"
 
 
-# Predefined elements with specific weights and symbols, representing different types of terrain or boundaries.
-gran_elem = Point(0, 0, sys.maxsize, "█")  # Represents a boundary or wall.
+gran_elem = Point(0, 0, sys.maxsize, "█")
 central_elem = Point(
     0, 0, sys.maxsize, "#"
-)  # Represents a central element in the maze (also impassable).
+)
 hill_elem = Point(
     0, 0, 5, "^"
-)  # Represents a hill, with a higher traversal cost (weight = 5).
+)
 swamp_elem = Point(
     0, 0, 3, "~"
-)  # Represents a swamp, with medium traversal cost (weight = 3).
+)
 forest_elem = Point(
     0, 0, 2, "@"
-)  # Represents a forest, with lower traversal cost (weight = 2).
+)
 common_elem = Point(
     0, 0, 1, " "
-)  # Represents common ground with minimal traversal cost (weight = 1).
+)
 
-# Lists of symbols and corresponding weights for easy access when generating or managing terrain types.
 symbols = [hill_elem.symbol, swamp_elem.symbol, forest_elem.symbol, common_elem.symbol]
 weights = [hill_elem.weight, swamp_elem.weight, forest_elem.weight, common_elem.weight]

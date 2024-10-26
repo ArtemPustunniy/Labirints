@@ -2,7 +2,7 @@ import math
 import random
 
 from src.entities.directions import Directions
-from src.entities.maze import Maze, PossibleChoiceOfTypeOfMaze
+from src.entities.maze import Maze, DiffTypesOfSurfaces
 from src.entities.point import (
     gran_elem,
     central_elem,
@@ -28,7 +28,7 @@ class PrimGenerator(Generator):
         height: int,
         cords: tuple,
         density,
-        user_choice_of_type_of_maze,
+        diff_types_of_surfaces: DiffTypesOfSurfaces,
     ) -> Maze:
         """
         Generates a maze using Prim's algorithm.
@@ -38,18 +38,15 @@ class PrimGenerator(Generator):
             height (int): The height of the maze.
             cords (tuple): A tuple containing the start and end coordinates of the maze.
             density (float): The density of walls or obstacles in the maze.
-            user_choice_of_type_of_maze (str): Indicates whether the maze should contain different terrains.
+            diff_types_of_surfaces (DiffTypesOfSurfaces): Indicates whether the maze should contain different surfaces.
 
         Returns:
             Maze: The generated maze object.
         """
-        # Initialize the maze object with the given properties.
-        maze = Maze(width, height, cords, density, user_choice_of_type_of_maze)
+        maze = Maze(width, height, cords, density, diff_types_of_surfaces)
 
-        # Set the start point of the maze.
         maze.grid[maze.start[1]][maze.start[0]].symbol = common_elem.symbol
 
-        # Create an initial list of walls to process, adjacent to the start point.
         walls = [
             (maze.start[0] + direction.dx, maze.start[1] + direction.dy)
             for direction in Directions
@@ -57,12 +54,10 @@ class PrimGenerator(Generator):
             and 0 <= maze.start[1] + direction.dy < maze.height
         ]
 
-        # Shuffle the list of walls to randomize the generation.
         random.shuffle(walls)
 
         while walls:
             wx, wy = walls.pop()
-            # Ensure the current wall is within bounds and is either a boundary or a central element.
             if (
                 0 < wx < maze.width - 1
                 and 0 < wy < maze.height - 1
@@ -72,7 +67,6 @@ class PrimGenerator(Generator):
                 )
             ):
 
-                # Find neighboring cells that are part of the maze.
                 neighbors = [
                     (wx + direction.dx, wy + direction.dy)
                     for direction in Directions
@@ -86,27 +80,23 @@ class PrimGenerator(Generator):
                             forest_elem.symbol,
                             common_elem.symbol,
                         ]
-                        if user_choice_of_type_of_maze == "Да"
+                        if diff_types_of_surfaces == DiffTypesOfSurfaces.YES
                         else [common_elem.symbol]
                     )
                 ]
 
-                # If the wall has exactly one neighbor, it becomes part of the maze.
                 if len(neighbors) == 1:
                     if (
-                        user_choice_of_type_of_maze
-                        == PossibleChoiceOfTypeOfMaze.YES.value
+                        diff_types_of_surfaces
+                        == DiffTypesOfSurfaces.YES
                     ):
-                        # Randomly choose a terrain type for the wall.
                         choice = random.randint(0, len(symbols) - 1)
                         maze.grid[wy][wx].symbol = symbols[choice]
                         maze.grid[wy][wx].weight = weights[choice]
                     else:
-                        # Set the wall to be a common element.
                         maze.grid[wy][wx].symbol = common_elem.symbol
                         maze.grid[wy][wx].weight = common_elem.weight
 
-                    # Add neighboring walls of the newly added cell to the list.
                     walls.extend(
                         [
                             (wx + direction.dx, wy + direction.dy)
@@ -123,10 +113,8 @@ class PrimGenerator(Generator):
                             )
                         ]
                     )
-                    # Shuffle the list to ensure randomness in maze generation.
                     random.shuffle(walls)
 
-        # Add additional open cells based on the density setting.
         koef = math.ceil((maze.width * maze.height) * (1 - maze.density + 0.1))
         for _ in range(koef):
             rand_y = random.randint(1, maze.height - 2)

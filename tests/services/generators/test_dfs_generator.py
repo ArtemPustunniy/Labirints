@@ -31,7 +31,7 @@ class TestDfsGenerator(unittest.TestCase):
         self.assertEqual(self.maze.end, (5, 5))
         self.assertEqual(self.maze.density, self.density)
         self.assertEqual(
-            self.maze.user_choice_of_type_of_maze, self.user_choice_of_type_of_maze
+            self.maze.diff_types_of_surfaces, self.user_choice_of_type_of_maze
         )
 
     def test_start_and_end_points(self):

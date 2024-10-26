@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 
+from src.entities.maze import DiffTypesOfSurfaces
+
 
 class Generator(ABC):
     """
@@ -14,8 +16,8 @@ class Generator(ABC):
         height: int,
         cords: tuple,
         density,
-        user_choice_of_type_of_maze,
-    ):
+        diff_types_of_surfaces: DiffTypesOfSurfaces,
+    ) -> None:
         """
         Abstract method to generate a maze.
 
@@ -24,7 +26,7 @@ class Generator(ABC):
             height (int): The height of the maze.
             cords (tuple): A tuple containing the start and end coordinates of the maze.
             density (float): The density of walls or obstacles in the maze.
-            user_choice_of_type_of_maze (str): Indicates whether the maze should contain different terrains.
+            diff_types_of_surfaces (DiffTypesOfSurfaces): Indicates whether the maze should contain different surfaces.
 
         Returns:
             Maze: The generated maze object.

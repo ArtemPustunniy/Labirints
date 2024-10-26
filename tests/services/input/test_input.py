@@ -3,7 +3,7 @@ from unittest.mock import patch
 from io import StringIO
 import sys
 from src.services.input.input import InputHandler
-from src.entities.maze import PossibleChoiceOfTypeOfMaze
+from src.entities.maze import DiffTypesOfSurfaces
 
 
 class TestInputHandler(unittest.TestCase):
@@ -49,12 +49,12 @@ class TestInputHandler(unittest.TestCase):
 
     @patch("builtins.input", side_effect=["1"])
     def test_input_solve_algo_no(self, mock_input):
-        result = self.handler.input_solve_algo(PossibleChoiceOfTypeOfMaze.NO.value)
-        self.assertEqual(result, 1)
+        result = self.handler.input_solve_algo(DiffTypesOfSurfaces.NO)
+        self.assertEqual(int(result), 1)
 
     @patch("builtins.input", side_effect=["Да"])
     def test_input_solve_algo_yes(self, mock_input):
-        result = self.handler.input_solve_algo(PossibleChoiceOfTypeOfMaze.YES.value)
+        result = self.handler.input_solve_algo(DiffTypesOfSurfaces.YES)
         self.assertEqual(result, "Да")
 
 

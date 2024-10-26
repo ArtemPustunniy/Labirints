@@ -1,13 +1,17 @@
-from abc import (
-    ABC,
-    abstractmethod,
-)  # Importing Abstract Base Class (ABC) and abstractmethod for defining an abstract base class
+from abc import ABC, abstractmethod
 
 
-# Abstract base class for rendering the maze
 class Render(ABC):
-    # Abstract method that must be implemented by subclasses to render the maze
-    # Takes the maze, user's choice of maze type, and an optional path as parameters
+    """Abstract base class for rendering the maze."""
+
     @abstractmethod
-    def render(self, maze, user_choice_of_type_of_maze, path: [] = None):
-        pass  # This method will be defined in concrete subclasses
+    def render(self, maze, diff_types_of_surfaces, path: [] = None) -> None:
+        """
+        Abstract method that must be implemented by subclasses to render the maze.
+
+        Args:
+            maze: The maze object to render.
+            diff_types_of_surfaces: The user's choice regarding the type of maze.
+            path (list, optional): The path to render within the maze.
+        """
+        pass

@@ -28,7 +28,7 @@ class TestMaze(unittest.TestCase):
         self.assertEqual(self.maze.end, (3, 3))
         self.assertEqual(self.maze.density, self.density)
         self.assertEqual(
-            self.maze.user_choice_of_type_of_maze, self.user_choice_of_type_of_maze
+            self.maze.diff_types_of_surfaces, self.user_choice_of_type_of_maze
         )
         self.assertEqual(self.maze.delta, 100)
 

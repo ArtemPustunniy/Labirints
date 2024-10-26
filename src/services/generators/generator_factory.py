@@ -1,5 +1,5 @@
 from src.services.generators.dfs_generator import DfsGenerator
-from src.services.generators.generator import AvailableGenerators
+from src.services.generators.generator import AvailableGenerators, Generator
 from src.services.generators.kruskal_generator import KruskalGenerator
 from src.services.generators.prim_generator import PrimGenerator
 
@@ -11,7 +11,7 @@ class GeneratorFactory:
     """
 
     @staticmethod
-    def get_generator(generator_type: int):
+    def get_generator(generator_type: int) -> Generator:
         """
         Returns an instance of the generator based on the given generator type.
 

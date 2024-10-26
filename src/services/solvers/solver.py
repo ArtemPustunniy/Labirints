@@ -1,20 +1,29 @@
-from abc import (
-    ABC,
-    abstractmethod,
-)  # Importing ABC and abstractmethod to define an abstract base class
-from enum import Enum  # Importing Enum to define a set of named constants
+from abc import ABC, abstractmethod
+from enum import Enum
 
 
-# Abstract base class for a maze-solving algorithm
 class Solver(ABC):
-    # Abstract method that must be implemented by all subclasses to solve the maze
+    """
+    Abstract base class for a maze-solving algorithm.
+    """
+
     @abstractmethod
-    def solve(self, maze):
-        pass  # To be defined by concrete solver classes
+    def solve(self, maze) -> None:
+        """
+        Abstract method that must be implemented by all subclasses to solve the maze.
+        """
+        pass
 
 
-# Enum representing the available solvers (algorithms) for solving the maze
 class AvailableSolvers(Enum):
-    BfsSolver = 1  # Breadth-First Search (BFS) algorithm
-    AstarSolver = 2  # A* search algorithm
-    DjkstraSolver = "Да"  # Dijkstra's algorithm (represented by "Да" for a specific reason, perhaps for user input)
+    """
+    Enum representing the available solvers (algorithms) for solving the maze.
+
+    Attributes:
+        BfsSolver (int): Breadth-First Search (BFS) algorithm.
+        AstarSolver (int): A* search algorithm.
+        DjkstraSolver (str): Dijkstra's algorithm (represented by 'Да' for specific user input handling).
+    """
+    BfsSolver = 1
+    AstarSolver = 2
+    DjkstraSolver = "Да"
